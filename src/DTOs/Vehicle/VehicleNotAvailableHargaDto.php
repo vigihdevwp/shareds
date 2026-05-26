@@ -1,0 +1,33 @@
+<?php
+
+declare(strict_types=1);
+
+namespace VigihdevWP\Shareds\DTOs\Vehicle;
+
+use VigihdevWP\Shareds\Contracts\Vehicle\VehicleNotAvailableHargaInterface;
+use Symfony\Component\Serializer\Annotation\SerializedName;
+
+final class VehicleNotAvailableHargaDto implements VehicleNotAvailableHargaInterface
+{
+
+    public function __construct(
+        #[SerializedName("paket_sewa")]
+        private readonly string $paketSewa,
+        private readonly string $harga = 'Tidak tersedia',
+    ) {}
+
+    public function getHarga(): string
+    {
+        return $this->harga;
+    }
+
+    public function getPaketSewa(): string
+    {
+        return $this->paketSewa;
+    }
+
+    public function getHargaFormatted(): string
+    {
+        return $this->getHarga();
+    }
+}
